@@ -7,7 +7,7 @@ class Nav extends Component {
     const { authedUser } = this.props
     return (
       <div>
-        {authedUser !== ''
+        {authedUser !== null
           ? <nav className='nav'>
             <ul>
               <li>

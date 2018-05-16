@@ -15,7 +15,7 @@ class Login extends Component {
   render() {
     const { users, userIds, authedUser } = this.props
 
-    if(authedUser !== ''){
+    if(authedUser !== null){
       this.props.history.push('/')
     }
 

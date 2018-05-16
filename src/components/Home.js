@@ -12,7 +12,7 @@ class Home extends Component {
     const { showAnswered } = this.state
     const { authedUser, answeredQuestionIds, unansweredQuestionIds } = this.props
 
-    if (authedUser === '') {
+    if (authedUser === null) {
       return <Redirect to='/login' />
     }
 

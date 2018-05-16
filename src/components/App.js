@@ -25,7 +25,7 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <div>
-                {this.props.authedUser === ''
+                {this.props.authedUser === null
                   ? null
                   : <LoggedInUser />}
                 <div>

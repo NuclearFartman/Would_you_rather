@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { handleVoteForOption } from '../actions/questions';
 
 class QuestionDetails extends Component {
@@ -18,6 +18,9 @@ class QuestionDetails extends Component {
 
   render() {
     const { question, authedUser, users } = this.props
+    if (authedUser === null) {
+      return <Redirect to='/login' />
+    }
     if (question === null) {
       return <p>404 This Question doesn't exist</p>
     }

@@ -7,7 +7,7 @@ class LoggedInUser extends Component {
 
   logout = (e) => {
     e.preventDefault()
-    this.props.dispatch(setAuthedUser(''))
+    this.props.dispatch(setAuthedUser(null))
     this.props.history.push('/login')
   }
 
@@ -15,7 +15,7 @@ class LoggedInUser extends Component {
     const { users, authedUser } = this.props
     return (
       <div>
-        {authedUser
+        {authedUser !== null
           ? <div className='loggedInUser'>
             <button onClick={(e) => this.logout(e)}>
               <img
