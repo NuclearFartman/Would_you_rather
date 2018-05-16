@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 
 class Question extends Component {
   render() {
-    const { id } = this.props
-    const { optionOne, optionTwo } = this.props.question
+    const { id, question: {optionOne, optionTwo} } = this.props
     return (
       <div>
         <Link to={`/questions/${id}`} className='question'>

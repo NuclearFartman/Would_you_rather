@@ -1,7 +1,33 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+function getNumberOfUserQuestionsAsked(questions, user) {
+  let sum = 0
+  Object.entries(questions).forEach(([key, value]) => {
+    if (value.author === user) sum++
+  })
+  return sum
+}
+
+function getNumberOfUserQuestionsAnswered(questions, user) {
+  let sum = 0
+  Object.entries(questions).forEach(([key, value]) => {
+    if (value.optionOne.votes.includes(user) ||
+      value.optionTwo.votes.includes(user)) {
+      sum++
+    }
+  })
+  return sum
+}
+
+function getTotalNumberOfUserQuestions(questions, user) {
+  let total = getNumberOfUserQuestionsAsked(questions, user) +
+    getNumberOfUserQuestionsAnswered(questions, user)
+  return total
+}
+
 class Leaderboard extends Component {
+
   render() {
     const { users, userIds, authedUser, questions } = this.props
     return (
@@ -26,31 +52,6 @@ class Leaderboard extends Component {
       </div>
     )
   }
-}
-
-function getNumberOfUserQuestionsAsked(questions, user) {
-  let sum = 0
-  Object.entries(questions).forEach(([key, value]) => {
-    if (value.author === user) sum++
-  })
-  return sum
-}
-
-function getNumberOfUserQuestionsAnswered(questions, user) {
-  let sum = 0
-  Object.entries(questions).forEach(([key, value]) => {
-    if (value.optionOne.votes.includes(user) ||
-      value.optionTwo.votes.includes(user)) {
-      sum++
-    }
-  })
-  return sum
-}
-
-function getTotalNumberOfUserQuestions(questions, user) {
-  let total = getNumberOfUserQuestionsAsked(questions, user) +
-    getNumberOfUserQuestionsAnswered(questions, user)
-  return total
 }
 
 function mapStateToProps({ users, userIds, authedUser, questions }) {

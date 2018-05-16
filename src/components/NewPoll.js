@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { handleSaveQuestion } from '../actions/questions'
 import { Redirect} from 'react-router-dom'
 
+const defaultState = {
+  textForOptionOne: '',
+  textForOptionTwo: '',
+  submit: false
+}
+
 class NewPoll extends Component {
-  state = {
-    textForOptionOne: '',
-    textForOptionTwo: '',
-    submit: false
-  }
+  state = defaultState
   handleChange = (e, stateField) => {
     const text = e.target.value
 
@@ -26,10 +28,7 @@ class NewPoll extends Component {
 
     this.setState(() => ({
       textForOptionOne: '',
-      textForOptionTwo: ''
-    }))
-
-    this.setState(() => ({
+      textForOptionTwo: '',
       submit: true
     }))
   }

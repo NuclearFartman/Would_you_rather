@@ -24,7 +24,7 @@ class QuestionDetails extends Component {
     if (question === null) {
       return <p>404 This Question doesn't exist</p>
     }
-    let avatar = getAvatar(question, users)
+    const avatar = getAvatar(question, users)
 
     return (
       <div>
